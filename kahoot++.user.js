@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kahoot++
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.2.2
+// @version      0.2.3
 // @description  Improvements to Kahoot
 // @author       Evan Young (@Bowser65)
 // @match        https://kahoot.it/*
@@ -11,7 +11,6 @@
 (() => {
   const varColor = '#003366'
   
-  document.title = 'Kahoot++'
   document.head.innerHTML += `
     <style>
       .animated-background, .join-view__bg, .intro.get-ready {
