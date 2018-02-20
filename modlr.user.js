@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Modlr
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.0
+// @version      0.1.1
 // @description  Apply course totals
 // @author       Evan Young (@Bowser65)
 // @match        http://www.southtechnical.org/moodle/grade/report/*
@@ -16,7 +16,7 @@
   tot = 0
 
   for (let g of grds) {
-    if (g.headers.indexOf('grade') !== -1 && g.innerText !== '-') {
+    if (g.headers.indexOf('grade') !== -1 && g.innerText !== '-' && parseFloat(g.innerText)) {
       scr += parseFloat(g.innerText)
       tot += parseFloat(g.nextElementSibling.innerText.split('–')[1])
     }
