@@ -1,18 +1,20 @@
 // ==UserScript==
 // @name         Kahoot++
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.2.8
+// @version      0.3.0
 // @description  Improvements to Kahoot
 // @author       Evan Young (@Bowser65)
 // @match        https://kahoot.it/*
-// @grant        none
+// @grant        GM_registerMenuCommand
+// @grant        GM_setValue
+// @grant        GM_getValue
 // ==/UserScript==
 
-(() => {
-  const varColor = '#003366'
+function addStyle () {
+  const varColor = GM_getValue('color', '') ? GM_getValue('color', '') : '#003366'
 
   document.head.innerHTML += `
-    <style>
+    <style data-from="hakoot">
       .animated-background, .join-view__bg, .intro.get-ready {
         background-color: ${varColor} !important;
         animation: none !important;
@@ -37,4 +39,18 @@
       }
   </style>
   `
+}
+function removeStyle () {
+  $('[data-from]').remove()
+}
+
+(() => {
+  addStyle()
+
+  GM_registerMenuCommand('Set Color', () => {
+    const color = window.prompt('Set Your Background Color')
+    if (color) {
+      GM_setValue('color', color);
+    }
+  }, 't');
 })()
