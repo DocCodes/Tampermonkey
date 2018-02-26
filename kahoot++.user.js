@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kahoot++
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.2.6
+// @version      0.2.8
 // @description  Improvements to Kahoot
 // @author       Evan Young (@Bowser65)
 // @match        https://kahoot.it/*
@@ -30,11 +30,9 @@
         display: none !important;
       }
 
-      .counter-background {
-        display: none !important;
-      }
-
-      .bonus-badge-wrapper.bonus-badge-wrapper--streak-bonus-level-text {
+      .counter-background,
+      .bonus-badge-wrapper.bonus-badge-wrapper--streak-bonus-level-text,
+      .status-bar__game-pin {
         display: none !important;
       }
   </style>
