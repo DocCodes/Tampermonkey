@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kahoot++
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.2.5
+// @version      0.2.6
 // @description  Improvements to Kahoot
 // @author       Evan Young (@Bowser65)
 // @match        https://kahoot.it/*
@@ -10,22 +10,22 @@
 
 (() => {
   const varColor = '#003366'
-  
+
   document.head.innerHTML += `
     <style>
       .animated-background, .join-view__bg, .intro.get-ready {
         background-color: ${varColor} !important;
         animation: none !important;
       }
-  
+
       .logo-container {
         padding-top: 0px !important;
       }
-  
+
       .intro.get-ready .counter {
         background-color: ${varColor} !important;
       }
-  
+
       .vertical-alignment-wrapper__bottom {
         display: none !important;
       }
@@ -34,7 +34,7 @@
         display: none !important;
       }
 
-      .bonus-badge-wrapper.bonus-badge-wrapper--streak-bonus-level-text' {
+      .bonus-badge-wrapper.bonus-badge-wrapper--streak-bonus-level-text {
         display: none !important;
       }
   </style>
