@@ -66,7 +66,8 @@
     return new MonkeyConfig(cfg)
   }
   function handler () {
-    cfg = buildSettings()
+    var $ = window.$
+    var cfg = buildSettings()
     GM_registerMenuCommand('Kahoot++ Settings', () => { cfg.open('layer') })
 
     addPin()
