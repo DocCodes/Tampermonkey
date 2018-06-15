@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EEY.PW
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.0
+// @version      0.1.1
 // @description  My URL shortening service
 // @author       Evan Young (@evaneliasyoung)
 // @match        http://*/*
@@ -34,7 +34,7 @@
             res = JSON.parse(txt)
             GM_notification(`Error: ${res.description}`)
           } catch (err) {
-            GM_notification(txt)
+            GM_notification(`Success! URL Shortened: ${txt}.`)
             GM_setClipboard(txt)
           }
         }
