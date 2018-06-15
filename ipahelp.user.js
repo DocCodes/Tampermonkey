@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         IPAHelp
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.0
+// @version      0.1.1
 // @description  Helps pronounce IPA on Wikipedia
-// @author       Evan Young (@Bowser65)
+// @author       Evan Young (@evaneliasyoung)
 // @match        https://en.wikipedia.org/wiki/*
 // @grant        none
 // ==/UserScript==
