@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EEY.PW
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.1
+// @version      0.1.2
 // @description  My URL shortening service
 // @author       Evan Young (@evaneliasyoung)
 // @match        http://*/*
@@ -18,16 +18,16 @@
 (() => {
   function buildSettings () {
     GM_registerMenuCommand('Set EEY.PW Token', () => {
-      const token = window.prompt('Enter Your Token', GM_getValue('token') ? GM_getValue('token') : 'token here...')
-      if (token) {
-        GM_setValue('token', token)
+      const key = window.prompt('Enter Your Key', GM_getValue('key') ? GM_getValue('key') : 'key here...')
+      if (key) {
+        GM_setValue('key', key)
       }
     }, 't')
     GM_registerMenuCommand('Copy Shortlink', () => {
       let url = window.location.href
-      let token = GM_getValue('token', '')
+      let key = GM_getValue('key', '')
       let xhr = GM_xmlhttpRequest({
-        url: `http://eey.pw/portable?token=${token}&url=${url}`,
+        url: `http://eey.pw/portable?key=${key}&url=${url}`,
         onload: (res) => {
           let txt = res.responseText
           try {
