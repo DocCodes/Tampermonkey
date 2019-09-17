@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         IPAHelp
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.1
+// @version      0.1.2
 // @description  Helps pronounce IPA on Wikipedia
 // @author       Evan Young (@evaneliasyoung)
 // @match        https://en.wikipedia.org/wiki/*
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @grant        none
 // ==/UserScript==
 
-(() => {
+;(() => {
   async function addStyle () {
     document.head.innerHTML += `
     <style>
@@ -53,18 +54,22 @@
     addStyle()
     buildDiv()
 
-    $('a[title="Help:IPA/English"]').hover((ev) => {
+    $('a[title="Help:IPA/English"]').hover(ev => {
       let tp = ev.type
       let e
       if (ev.target.href === undefined) {
-        e = $(ev.target).parents('a').get(0)
+        e = $(ev.target)
+          .parents('a')
+          .get(0)
       } else {
         e = ev.target
       }
       $('#IPAHelp table tbody').html('')
 
       if (tp === 'mouseenter') {
-        if (window.IPAClear !== undefined) { clearInterval(window.IPAClear) }
+        if (window.IPAClear !== undefined) {
+          clearInterval(window.IPAClear)
+        }
         $('#IPAHelp').removeClass('ipa-hidden')
       } else {
         window.IPAClear = setTimeout(() => {
@@ -72,17 +77,18 @@
         }, 5000)
       }
 
-      $(e).find('span > span').each((i, e) => {
-        $('#IPAHelp table tbody').append(`
+      $(e)
+        .find('span > span')
+        .each((i, e) => {
+          $('#IPAHelp table tbody').append(`
           <tr>
             <td>${e.innerText}</td>
             <td>${e.title}</td>
           </tr>
         `)
-      })
+        })
     })
   }
 
-  var $ = window.$
   handler()
 })()

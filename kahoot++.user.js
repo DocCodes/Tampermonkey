@@ -1,18 +1,19 @@
 // ==UserScript==
 // @name         Kahoot++
 // @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.4.1
+// @version      0.4.2
 // @description  Improvements to Kahoot
 // @author       Evan Young (@evaneliasyoung)
 // @match        https://kahoot.it/*
 // @require      https://raw.github.com/odyniec/MonkeyConfig/master/monkeyconfig.js
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @grant        GM_registerMenuCommand
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_addStyle
 // ==/UserScript==
 
-(() => {
+;(() => {
   function addStyle () {
     const varColor = cfg.get('color') ? cfg.get('color') : '#003366'
 
@@ -44,7 +45,9 @@
   }
   function addPin () {
     let vars = {}
-    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, k, v) => { vars[k] = v })
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, k, v) => {
+      vars[k] = v
+    })
     if (vars.pin) {
       $('#inputSession').get(0).value = vars.pin
     }
@@ -60,18 +63,21 @@
         }
       },
       onSave: function (v) {
-        removeStyle(); addStyle()
+        removeStyle()
+        addStyle()
       }
     }
     return new MonkeyConfig(cfg)
   }
   function handler () {
-    var $ = window.$
     var cfg = buildSettings()
-    GM_registerMenuCommand('Kahoot++ Settings', () => { cfg.open('layer') })
+    GM_registerMenuCommand('Kahoot++ Settings', () => {
+      cfg.open('layer')
+    })
 
     addPin()
     addStyle()
   }
+
   handler()
 })()
