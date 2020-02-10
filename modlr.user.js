@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Modlr
-// @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.2
+// @namespace    https://github.com/evaneliasyoung/Tampermonkey
+// @version      0.1.3
 // @description  Apply course totals
 // @author       Evan Young (@evaneliasyoung)
 // @match        http://www.southtechnical.org/moodle/grade/report/*

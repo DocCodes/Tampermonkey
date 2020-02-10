@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kahoot++
-// @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.4.3
+// @namespace    https://github.com/evaneliasyoung/Tampermonkey
+// @version      0.4.4
 // @description  Improvements to Kahoot
 // @author       Evan Young (@evaneliasyoung)
 // @match        https://kahoot.it/*

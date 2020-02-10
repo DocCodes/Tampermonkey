@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EEY.PW
-// @namespace    https://github.com/DocCodes/Tampermonkey
-// @version      0.1.3
+// @namespace    https://github.com/evaneliasyoung/Tampermonkey
+// @version      0.1.4
 // @description  My URL shortening service
 // @author       Evan Young (@evaneliasyoung)
 // @match        http://*/*
