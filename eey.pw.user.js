@@ -26,13 +26,10 @@
     GM_registerMenuCommand('Copy Shortlink', () => {
       let url = encodeURIComponent(window.location.href)
       let key = GM_getValue('key', '')
-      console.log('key', key)
-      console.log(`https://eey.pw/portable?key=${key}&url=${url}`)
       let xhr = GM_xmlhttpRequest({
         url: `https://eey.pw/portable?key=${key}&url=${url}`,
         onload: (res) => {
           let txt = res.responseText
-          console.log('txt', txt)
           try {
             res = JSON.parse(txt)
             GM_notification(`Error: ${res.description}`)
