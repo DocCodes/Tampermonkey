@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EEY.PW
 // @namespace    https://github.com/evaneliasyoung/Tampermonkey
-// @version      0.1.4
+// @version      0.1.5
 // @description  My URL shortening service
 // @author       Evan Young (@evaneliasyoung)
 // @match        http://*/*
@@ -24,12 +24,15 @@
       }
     }, 't')
     GM_registerMenuCommand('Copy Shortlink', () => {
-      let url = encodeURIComponent(encodeURIComponent(window.location.href))
+      let url = encodeURIComponent(window.location.href)
       let key = GM_getValue('key', '')
+      console.log('key', key)
+      console.log(`https://eey.pw/portable?key=${key}&url=${url}`)
       let xhr = GM_xmlhttpRequest({
-        url: `http://eey.pw/portable?key=${key}&url=${url}`,
+        url: `https://eey.pw/portable?key=${key}&url=${url}`,
         onload: (res) => {
           let txt = res.responseText
+          console.log('txt', txt)
           try {
             res = JSON.parse(txt)
             GM_notification(`Error: ${res.description}`)
